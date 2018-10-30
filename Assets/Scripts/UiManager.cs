@@ -61,7 +61,8 @@ public class UiManager : MonoBehaviour {
     }
     public void Play()
     {
-        Application.LoadLevel("Level1");
+        Application.LoadLevel("GameScene");
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
         foreach (Button button in buttons)
         {
             button.gameObject.SetActive(false);
@@ -78,7 +79,7 @@ public class UiManager : MonoBehaviour {
     }
     public void Menu()
     {
-        Application.LoadLevel("menuScene");
+        Application.LoadLevel("TitleScene");
     }
     public void Exit()
     {

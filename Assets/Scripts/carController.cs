@@ -21,7 +21,7 @@ public class carController : MonoBehaviour {
 
     void Awake()
     {
-
+        am.carSound.Play();
         rb = GetComponent<Rigidbody2D>();
 #if UNITY_ANDROID
         currentPlatformAndroid=true;
@@ -29,13 +29,14 @@ public class carController : MonoBehaviour {
         currentPlatformAndroid = false;
 #endif
 
-        am.carSound.Play();
+        
     }
     void Start () {
        //ui = GetComponent<uiManager>();
         position = transform.position;
+       
 
-        if(currentPlatformAndroid == true)
+        if (currentPlatformAndroid == true)
         {
             Debug.Log("Android");
         }
@@ -72,13 +73,13 @@ public class carController : MonoBehaviour {
     
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Collision!");
         if (col.gameObject.tag == "Enemy Car")
         {
             gameObject.SetActive(false);
 
             Destroy(gameObject);
             ui.gameOverActivated();
+            am.carSound.Stop();
         }
 
 
